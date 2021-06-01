@@ -448,6 +448,11 @@ input[type=button].blue, button.hifi-edit-button.blue {
     background-color: #1080b8;
     background: linear-gradient(#00b4ef 20%, #1080b8 100%);
 }
+input[type=button].darkblue, button.hifi-edit-button.darkblue {
+    color: #fff;
+    background-color: #0064ef;
+    background: linear-gradient(#0064ef 20%, #053096 100%);
+}
 input[type=button].orange, button.hifi-edit-button.orange {
     color: #fff;
     background-color: #8f5100;
@@ -492,6 +497,10 @@ input[type=button].blue:enabled:hover, button.hifi-edit-button.blue:enabled:hove
     background: linear-gradient(#00b4ef, #00b4ef);
     border: none;
 }
+input[type=button].darkblue:enabled:hover, button.hifi-edit-button.darkblue:enabled:hover {
+    background: linear-gradient(#00b4ef, #00b4ef);
+    border: none;
+}
 input[type=button].orange:enabled:hover, button.hifi-edit-button.orange:enabled:hover {
     background: linear-gradient(#d97b00, #d97b00);
     border: none;
@@ -513,6 +522,9 @@ input[type=button].red:active, button.hifi-edit-button.red:active {
 }
 input[type=button].blue:active, button.hifi-edit-button.blue:active {
     background: linear-gradient(#1080b8, #1080b8);
+}
+input[type=button].darkblue:active, button.hifi-edit-button.darkblue:active {
+    background: linear-gradient(#053096, #053096);
 }
 input[type=button].orange:active, button.hifi-edit-button.orange:active {
     background: linear-gradient(#8f5100, #8f5100);

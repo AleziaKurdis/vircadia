@@ -245,7 +245,8 @@ let elEntityTable,
     elUndo,
     elRedo,
     elParent,
-    elUnparent,    
+    elUnparent,
+    elHelp,
     elDelete,
     elRotateAsTheNextClickedSurface,
     elQuickRotate90x,
@@ -334,6 +335,7 @@ function loaded() {
         elRedo = document.getElementById("redo");
         elParent = document.getElementById("parent");
         elUnparent = document.getElementById("unparent");
+        elHelp = document.getElementById("help");
         elDelete = document.getElementById("delete");
         elRotateAsTheNextClickedSurface = document.getElementById("rotateAsTheNextClickedSurface");
         elQuickRotate90x = document.getElementById("quickRotate90x");
@@ -449,7 +451,11 @@ function loaded() {
         elRedo.onclick = function() {
             EventBridge.emitWebEvent(JSON.stringify({ type: "redo" }));
             closeAllEntityListMenu();
-        };         
+        };
+        elHelp.onclick = function() {
+            EventBridge.emitWebEvent(JSON.stringify({ type: "help" }));
+            closeAllEntityListMenu();
+        };
         elDelete.onclick = function() {
             EventBridge.emitWebEvent(JSON.stringify({ type: "delete" }));
             closeAllEntityListMenu();

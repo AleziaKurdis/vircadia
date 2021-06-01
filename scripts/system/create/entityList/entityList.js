@@ -30,6 +30,20 @@ const PROFILE = !PROFILING_ENABLED ? PROFILE_NOOP : function(name, fn, args) {
     console.log("PROFILE-Script " + profileIndent + "(" + name + ") End " + delta + "ms");
 };
 
+var helpOverlayWebWindow;
+
+function displayHelp() {
+    if (helpOverlayWebWindow !== undefined) {
+        helpOverlayWebWindow.close();
+    }
+    helpOverlayWebWindow = new OverlayWebWindow({
+        title: "Documentation",
+        source: "https://docs.vircadia.com/create/entities.html",
+        width: 1000,
+        height: 600
+    });
+}
+
 EntityListTool = function(shouldUseEditTabletApp) {
     var that = {};
 
@@ -75,7 +89,10 @@ EntityListTool = function(shouldUseEditTabletApp) {
     that.setVisible = function(newVisible) {
         visible = newVisible;
         webView.setVisible(shouldUseEditTabletApp() && visible);
-        entityListWindow.setVisible(!shouldUseEditTabletApp() && visible);        
+        entityListWindow.setVisible(!shouldUseEditTabletApp() && visible);
+        if (helpOverlayWebWindow !== undefined && !visible) {
+            helpOverlayWebWindow.close();
+        }
     };
 
     that.isVisible = function() {
@@ -332,6 +349,8 @@ EntityListTool = function(shouldUseEditTabletApp) {
             }
         } else if (data.type === "delete") {
             deleteSelectedEntities();
+        } else if (data.type === "help") {
+            displayHelp();
         } else if (data.type === "toggleLocked") {
             toggleSelectedEntitiesLocked();
         } else if (data.type === "toggleVisible") {
